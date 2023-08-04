@@ -1,0 +1,2 @@
+PLAIN TEXT HEADER: Sample Document
+PLAIN TEXT PARAGRAPH: This is a sample document.
