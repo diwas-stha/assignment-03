@@ -1,13 +1,17 @@
 '''
 Build a logging system using the Factory Design Pattern.
-Create a LoggerFactory class that generates different types of loggers (e.g., FileLogger,
-ConsoleLogger, DatabaseLogger). Implement methods in each logger to write logs to
-their respective destinations. Show how the Factory Design Pattern helps to decouple
+Create a LoggerFactory class that generates different
+types of loggers
+(e.g., FileLogger,ConsoleLogger, DatabaseLogger).
+Implement methods
+in each logger to write logs to their respective destinations.
+Show how the Factory Design Pattern helps to decouple
 the logging system from the application and allows for flexible log handling.
 
 '''
 
 from abc import ABC, abstractmethod
+
 
 class Logger(ABC):
     """
@@ -31,6 +35,7 @@ class Logger(ABC):
             message (str): The log message to be written.
         """
         pass
+
 
 class FileLogger(Logger):
     """
@@ -56,6 +61,7 @@ class FileLogger(Logger):
         with open("log.txt", "a") as file:
             file.write(f"[FileLogger] {message}\n")
 
+
 class ConsoleLogger(Logger):
     """
     Concrete Logger class that writes logs to the console.
@@ -78,6 +84,7 @@ class ConsoleLogger(Logger):
 
         """
         print(f"[ConsoleLogger] {message}")
+
 
 class DatabaseLogger(Logger):
     """
@@ -102,6 +109,7 @@ class DatabaseLogger(Logger):
         # Code to write log to a database
         print(f"[DatabaseLogger] {message}")
 
+
 class LoggerFactory:
     """
     Factory class to generate different types of loggers.
@@ -121,11 +129,11 @@ class LoggerFactory:
         Returns the logger instance based on the provided logger_type.
 
         Parameters:
-            logger_type (str): The type of logger to be created ("file", "console", or "database").
+            logger_type (str): The type of logger to be created.
 
         Returns:
             Logger: An instance of the requested Logger.
-        
+
         Raises:
             ValueError: If an invalid logger_type is provided.
         """
@@ -136,7 +144,10 @@ class LoggerFactory:
         elif logger_type == "database":
             return DatabaseLogger()
         else:
-            raise ValueError("Invalid logger type. Available types: file, console, database")
+            raise ValueError(
+                "Invalid logger type."
+                "Available types: file, console, database")
+
 
 if __name__ == "__main__":
     logger_type = input("Enter the logger type (file, console, database): ")

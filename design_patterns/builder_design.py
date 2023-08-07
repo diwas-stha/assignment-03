@@ -1,10 +1,12 @@
 from abc import ABC, abstractmethod
 
-#PRODUCT
+# PRODUCT
+
+
 class Document:
     def __init__(self):
         self.content = []
-    
+
     def add_content(self, content):
         self.content.append(content)
 
@@ -16,7 +18,7 @@ class Document:
             file.write(str(self))
 
 
-#Interface Builder
+# Interface Builder
 class IDocumentBuilder(ABC):
     @abstractmethod
     def add_header(self, text):
@@ -30,7 +32,9 @@ class IDocumentBuilder(ABC):
     def get_document(self) -> Document:
         pass
 
-#Concrete Builder
+# Concrete Builder
+
+
 class PDFBuilder(IDocumentBuilder):
     def __init__(self):
         self.document = Document()
@@ -72,7 +76,9 @@ class PlainTextBuilder(IDocumentBuilder):
     def get_document(self) -> Document:
         return self.document
 
-#Director
+# Director
+
+
 class DocumentDirector:
     def __init__(self, builder):
         self.builder = builder
@@ -83,7 +89,7 @@ class DocumentDirector:
 
 
 if __name__ == "__main__":
-    save_document_directory = r"D:\Fusemachines\Assignments\assignment-03\design_patterns\sample_documents"
+    save_document_directory = "sample_documents"
     # Generate and save PDF document
     pdf_builder = PDFBuilder()
     director = DocumentDirector(pdf_builder)
@@ -96,11 +102,11 @@ if __name__ == "__main__":
     director = DocumentDirector(html_builder)
     director.construct_document()
     html_document = html_builder.get_document()
-    html_document.save_to_file(save_document_directory + "\sample.html")
+    html_document.save_to_file(save_document_directory + "/sample.html")
 
     # Generate and save Plain Text document
     plain_text_builder = PlainTextBuilder()
     director = DocumentDirector(plain_text_builder)
     director.construct_document()
     plain_text_document = plain_text_builder.get_document()
-    plain_text_document.save_to_file(save_document_directory + "\sample.txt")
+    plain_text_document.save_to_file(save_document_directory + "/sample.txt")
