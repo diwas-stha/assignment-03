@@ -1,0 +1,6 @@
+2023-08-05 12:15:28 - INFO - Application started
+2023-08-05 12:15:30 - ERROR - Something went wrong
+2023-08-05 12:15:31 - INFO - Processing data
+2023-08-05 12:15:35 - WARNING - Low disk space
+2023-08-05 12:15:38 - ERROR - Connection failed
+2023-08-05 12:15:40 - INFO - Application stopped
